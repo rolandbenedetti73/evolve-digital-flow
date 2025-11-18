@@ -32,7 +32,7 @@ export default function Home({
               Time to make this site your own.
             </h1>
             <p>
-              Our workshop website is waiting to be built into something
+              This workshop website is waiting to be built into something
               amazing.
               <br />
               What are you waiting for?
