@@ -1,10 +1,9 @@
-import type { 
+import type {
   ArticleWithoutContent,
   Site,
 } from "@pantheon-systems/pcc-react-sdk";
 import { getArticleURLFromSite } from "@pantheon-systems/pcc-react-sdk/server";
 import Link from "next/link";
-import { useState } from "react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 
@@ -18,7 +17,7 @@ export function HomepageArticleGrid({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:w-2/3 2xl:w-full 2xl:grid-cols-[repeat(auto-fit,minmax(300px,438px))] 2xl:justify-center",
+        "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:w-2/3 2xl:w-full 2xl:grid-cols-[repeat(auto-fit,minmax(300px,438px))] 2xl:justify-center"
       )}
     >
       {articles.map((article, index) => (
@@ -65,12 +64,21 @@ interface ArticleGridCardProps {
 }
 
 // Utility to ensure URL include width and height params
-function withImageSizeParams(url: string | null, width = 400, height = 400): string | null {
+function withImageSizeParams(
+  url: string | null,
+  width = 400,
+  height = 400
+): string | null {
   if (!url) return url;
   try {
-    const u = new URL(url, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
-    u.searchParams.set('width', width.toString());
-    u.searchParams.set('height', height.toString());
+    const u = new URL(
+      url,
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "http://localhost"
+    );
+    u.searchParams.set("width", width.toString());
+    u.searchParams.set("height", height.toString());
     return u.toString();
   } catch {
     // If url is not valid, return as is
@@ -85,7 +93,6 @@ export function ArticleGridCard({
   isWide = false,
   site,
 }: ArticleGridCardProps) {
-
   const targetHref = getArticleURLFromSite(article, site, basePath);
   const rawImageSrc = (article.metadata?.["image"] as string) || null;
   const imageSrc = withImageSizeParams(rawImageSrc, 400, 400);
@@ -96,7 +103,7 @@ export function ArticleGridCard({
         "group flex h-full flex-col overflow-clip rounded-xl shadow-lg ring-1 ring-gray-300/50",
         isWide
           ? "sm:col-span-2 sm:flex-row 2xl:col-span-1 2xl:flex-col 2xl:only:col-span-2 2xl:only:flex-row"
-          : "",
+          : ""
       )}
     >
       <div
@@ -104,7 +111,7 @@ export function ArticleGridCard({
           "aspect-video w-full flex-shrink-0 overflow-hidden sm:h-[196px]",
           isWide
             ? "sm:h-full sm:max-w-[49%] 2xl:h-[196px] 2xl:max-w-[100%] 2xl:group-only:h-full 2xl:group-only:max-w-[49%]"
-            : "max-w-[100%]",
+            : "max-w-[100%]"
         )}
       >
         <GridItemCoverImage
@@ -115,7 +122,7 @@ export function ArticleGridCard({
       <div
         className={cn(
           "flex flex-grow flex-col justify-between p-8",
-          isWide && "sm:py-24 2xl:py-8 2xl:group-only:py-24",
+          isWide && "sm:py-24 2xl:py-8 2xl:group-only:py-24"
         )}
       >
         <div>
@@ -143,26 +150,18 @@ function GridItemCoverImage({
   imageSrc: string | null;
   imageAltText?: string | null | undefined;
 }) {
-  const [hasLoaded, setHasLoaded] = useState(false);
-
   return (
-    <>
-      {imageSrc != null ? (
+    <div className="grid h-full w-full">
+      <div className="col-start-1 row-start-1 h-full w-full bg-gradient-to-t from-neutral-800 to-neutral-100" />
+      {imageSrc && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={imageSrc}
           alt={imageAltText || undefined}
-          onLoad={() => setHasLoaded(true)}
-          className={cn("h-full w-full object-cover", {
-            block: hasLoaded,
-            hidden: !hasLoaded,
-          })}
+          className="col-start-1 row-start-1 h-full w-full object-cover bg-white"
+          loading="lazy"
         />
-      ) : null}
-
-      {imageSrc == null || !hasLoaded ? (
-        <div className="h-full w-full bg-gradient-to-t from-neutral-800 to-neutral-100" />
-      ) : null}
-    </>
+      )}
+    </div>
   );
 }
