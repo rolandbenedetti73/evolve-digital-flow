@@ -6,10 +6,10 @@ export default async function handler(
 ) {
   console.info("Received revalidation request");
   // Check for secret to confirm this is a valid request
-  // if (req.headers["x-pcc-webhook-secret"] !== process.env.REVALIDATION_SECRET) {
-  //   console.error("Invalid token in revalidation request, rejecting request");
-  //   return res.status(401).json({ message: "Invalid token" });
-  // }
+  if (req.headers["x-pcc-webhook-secret"] !== process.env.REVALIDATION_SECRET) {
+    console.error("Invalid token in revalidation request, rejecting request");
+    return res.status(401).json({ message: "Invalid token" });
+  }
 
   try {
     // Revalidate the index page and articles page
