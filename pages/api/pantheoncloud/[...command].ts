@@ -9,7 +9,7 @@ import { getAuthorById, listAuthors } from "../../../lib/pcc-metadata-groups";
 export const pantheonAPIOptions: PantheonAPIOptions = {
   resolvePath: getArticleURLFromSiteWithOptions({
     // The base path to use for the URL.
-    basePath: "/articles",
+    basePath: "/our-workspace-team",
     // Maximum depth to include in the URL. If it is -1, it will include all the categories. If it is 0, it will only include the article. If it is 1, it will include the article's slug or id and its immediate parent category and so on.
     maxDepth: -1,
   }),

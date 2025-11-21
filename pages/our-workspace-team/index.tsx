@@ -41,10 +41,13 @@ export default function ArticlesListTemplate({
 }: Props) {
   return (
     <Layout>
-      <NextSeo title="Articles" description="Articles" />
+      <NextSeo
+        title="Our Workspace Team"
+        description="Members of our workspace team"
+      />
 
       <ArticleList
-        headerText="Articles"
+        headerText="Our Workspace Team"
         articles={articles}
         cursor={cursor}
         totalCount={totalCount}
