@@ -19,7 +19,7 @@ describe("hasConfiguredPantheonClient", () => {
       },
     };
     expect(pantheonAPIOptions.resolvePath!({ id: "123" }, site)).toBe(
-      "/our-workspace-team/123"
+      "/our-workshop-team/123"
     );
   });
 
@@ -40,6 +40,6 @@ describe("hasConfiguredPantheonClient", () => {
         { id: "123", slug: "foo-bar-slug", publishingLevel: "PRODUCTION" },
         site
       )
-    ).toBe("/our-workspace-team/foo-bar-slug");
+    ).toBe("/our-workshop-team/foo-bar-slug");
   });
 });

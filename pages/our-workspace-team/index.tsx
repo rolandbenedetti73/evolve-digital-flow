@@ -42,12 +42,12 @@ export default function ArticlesListTemplate({
   return (
     <Layout>
       <NextSeo
-        title="Our Workspace Team"
-        description="Members of our workspace team"
+        title="Our Workshop Team"
+        description="Members of our workshop team"
       />
 
       <ArticleList
-        headerText="Our Workspace Team"
+        headerText="Our Workshop Team"
         articles={articles}
         cursor={cursor}
         totalCount={totalCount}

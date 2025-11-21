@@ -16,8 +16,8 @@ export const navItems = {
       label: "Home",
     },
     {
-      href: "/our-workspace-team",
-      label: "Our Workspace Team",
+      href: "/our-workshop-team",
+      label: "Our Workshop Team",
     },
   ],
   buttons: [
