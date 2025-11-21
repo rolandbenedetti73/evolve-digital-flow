@@ -34,7 +34,7 @@ export function HomepageArticleGrid({
 
 export function ArticleGrid({
   articles,
-  basePath = "/articles",
+  basePath = "/our-workshop-team",
   site,
 }: {
   articles: ArticleWithoutContent[];
@@ -88,7 +88,7 @@ function withImageSizeParams(
 
 export function ArticleGridCard({
   article,
-  basePath = "/articles",
+  basePath = "/our-workshop-team",
   imageAltText,
   isWide = false,
   site,

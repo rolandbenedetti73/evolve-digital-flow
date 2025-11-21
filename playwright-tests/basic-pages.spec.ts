@@ -8,7 +8,7 @@ test("basic navigation", async ({ page }) => {
   if (button) {
     await button.click();
   }
-  await page.waitForURL("**/articles/**", {
+  await page.waitForURL("**/our-workshop-team/**", {
     waitUntil: "networkidle",
   });
   await page.getByTestId("author").click();

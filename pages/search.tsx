@@ -1,4 +1,7 @@
-import { ArticleWithoutContent, markdownToText } from "@pantheon-systems/pcc-react-sdk";
+import {
+  ArticleWithoutContent,
+  markdownToText,
+} from "@pantheon-systems/pcc-react-sdk";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -35,7 +38,7 @@ export default function Search() {
     searchString
       ? `/api/search?q=${encodeURIComponent(String(searchString))}`
       : null,
-    fetcher,
+    fetcher
   );
 
   return (
@@ -77,7 +80,7 @@ export default function Search() {
                       <Skeleton />
                     ) : (
                       <Link
-                        href={`/articles/${result.slug || result.id}`}
+                        href={`/our-workshop-team/${result.slug || result.id}`}
                         className="text-xl font-medium text-sky-600 visited:text-purple-700"
                       >
                         {result.title}
@@ -95,14 +98,14 @@ export default function Search() {
 
                   <hr className="my-8" />
                 </Fragment>
-              ),
+              )
             )
           ) : (
             <div>
               <p
                 className={cn(
                   "text-xl",
-                  error ? "text-red-600" : "text-sky-600",
+                  error ? "text-red-600" : "text-sky-600"
                 )}
               >
                 {error ? "An error occurred" : "No results found"}

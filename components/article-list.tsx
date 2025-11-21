@@ -122,7 +122,7 @@ export default function ArticleList({
             <ArticleGridCard
               key={article.id}
               article={article}
-              basePath={"/articles"}
+              basePath={"/our-workshop-team"}
               site={site}
             />
           ))}

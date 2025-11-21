@@ -39,10 +39,10 @@ export default function ArticlesListTemplate({
 
   return (
     <Layout>
-      <NextSeo title="Articles" description="Articles" />
+      <NextSeo title="Our Workshop Team" description="Our Workshop Team" />
 
       <section className="max-w-screen-3xl mx-auto px-4 pt-16 sm:w-4/5 md:w-3/4 lg:w-4/5 2xl:w-3/4">
-        <PageHeader title="Paginated Articles" />
+        <PageHeader title="Paginated Member List" />
 
         <ArticleGrid
           articles={currentArticles as ArticleWithoutContent[]}
