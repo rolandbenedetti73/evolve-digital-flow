@@ -5,7 +5,7 @@ import {
 import { NextApiRequest, NextApiResponse } from "next";
 import { pantheonAPIOptions } from "../pantheoncloud/[...command]";
 
-const defaultBasePath = "/articles";
+const defaultBasePath = "/our-workshop-team";
 // Maximum number of articles to fetch to prevent abuse
 const MAX_ARTICLES = 10;
 
@@ -30,7 +30,7 @@ const MAX_ARTICLES = 10;
  */
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   // Check if it is a GET request
   if (req.method !== "GET") {
@@ -66,11 +66,11 @@ export default async function handler(
           console.error(
             "Error fetching article with ID %s:",
             sanitizedId,
-            error,
+            error
           );
           return null;
         }
-      }),
+      })
     );
   } catch (error) {
     console.error("Error fetching articles:", error);

@@ -33,16 +33,6 @@ interface Props {
   site: Site;
 }
 
-// ISR with a short lifetime results in new content appearing pretty quickly.
-// Without this setting (or something similar) this page
-// renders "dynamically," but with a long s-maxage
-// (cache-control: s-maxage=31536000)
-// With this "revalidate" value, the cache control header changes to
-// cache-control: s-maxage=5, stale-while-revalidate=31535995
-// See https://github.com/pantheon-systems/documentation/issues/9777
-// for more detail/discussion.
-export const revalidate = 5;
-
 export default function ArticlesListTemplate({
   articles,
   totalCount,
@@ -51,10 +41,13 @@ export default function ArticlesListTemplate({
 }: Props) {
   return (
     <Layout>
-      <NextSeo title="Articles" description="Articles" />
+      <NextSeo
+        title="Our Workshop Team"
+        description="Members of our workshop team"
+      />
 
       <ArticleList
-        headerText="Articles"
+        headerText="Our Workshop Team"
         articles={articles}
         cursor={cursor}
         totalCount={totalCount}
@@ -65,7 +58,7 @@ export default function ArticlesListTemplate({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Fetch the site and articles in parallel
   const [site, { data: articles, totalCount, cursor }] = await Promise.all([
     PCCConvenienceFunctions.getSite(),
@@ -81,5 +74,14 @@ export async function getServerSideProps() {
       totalCount,
       site,
     },
+    // ISR with a short lifetime results in new content appearing pretty quickly.
+    // Without this setting (or something similar) this page
+    // renders "dynamically," but with a long s-maxage
+    // (cache-control: s-maxage=31536000)
+    // With this "revalidate" value, the cache control header changes to
+    // cache-control: s-maxage=5, stale-while-revalidate=31535995
+    // See https://github.com/pantheon-systems/documentation/issues/9777
+    // for more detail/discussion.
+    revalidate: 5,
   };
 }
