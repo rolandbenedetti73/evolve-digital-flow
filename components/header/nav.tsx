@@ -16,8 +16,8 @@ export const navItems = {
       label: "Home",
     },
     {
-      href: "/articles",
-      label: "Articles",
+      href: "/our-workspace-team",
+      label: "Our Workspace Team",
     },
   ],
   buttons: [
@@ -64,7 +64,7 @@ export default function NavMenu() {
         className={cn(
           "text-popover-foreground z-50 mt-4 h-screen w-screen bg-white pt-4 shadow-md outline-none",
           "data-[state=open]:animate-in data-[state=open]:slide-in-from-right-full data-[state=open]:duration-300",
-          "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right-full data-[state=closed]:duration-300",
+          "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right-full data-[state=closed]:duration-300"
         )}
         align="start"
       >
